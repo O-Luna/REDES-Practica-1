@@ -3,8 +3,8 @@
 #include "pin_mux.h"
 #include "board.h"
 #include "fsl_debug_console.h"
-#include "enet.h"
-#include "aes.h"
+#include "p1_drivers/enet/enet.h"
+#include "p1_drivers/aes/aes.h"
 
 /* Mensajes */
 /*

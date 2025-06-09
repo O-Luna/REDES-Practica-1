@@ -21,7 +21,7 @@
 #include "fsl_phyksz8081.h"
 #include "fsl_sysmpu.h"
 #include "enet_cfg.h"
-#include "aes.h"
+#include "p1_drivers/aes/aes.h"
 
 /*******************************************************************************
  * Definitions
