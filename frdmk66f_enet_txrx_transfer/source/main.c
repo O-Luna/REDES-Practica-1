@@ -4,6 +4,7 @@
 #include "board.h"
 #include "fsl_debug_console.h"
 #include "enet.h"
+#include "aes.h"
 
 /* Mensajes */
 /*
@@ -74,6 +75,21 @@ int main(void)
         __asm volatile ("nop");
     }
 
+    for (uint8_t i = 0; i < mess_t; i++)
+    {
+        uint8_t cypher[ENET_DATA_LENGTH];
+        size_t length = encrypt_message((uint8_t *)messages[i], strlen(messages[i]), cypher);
+
+        transmit_frame(cypher, length);
+
+        uint32_t timeout = 10000000;
+        bool received = false;
+
+        while (timeout-- && !received)
+        {
+            received = receive_frame();
+        }
+    }
 
     while (1)
     {
